@@ -1,0 +1,56 @@
+{
+  "manifest_version": 3,
+  "name": "Loopless",
+  "version": "1.0.0",
+  "description": "Record your screen and camera, then save straight to Google Drive.",
+  "minimum_chrome_version": "116",
+
+  "permissions": [
+    "offscreen",
+    "storage",
+    "identity",
+    "tabs",
+    "tabCapture",
+    "desktopCapture",
+    "downloads"
+  ],
+  "host_permissions": [
+    "https://www.googleapis.com/"
+  ],
+
+  "background": {
+    "service_worker": "background.js"
+  },
+
+  "action": {
+    "default_title": "Loopless",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png",
+      "48": "icons/icon-48.png",
+      "128": "icons/icon-128.png"
+    }
+  },
+
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+
+  "options_page": "permissions.html",
+
+  "oauth2": {
+    "client_id": "PASTE_YOUR_CHROME_EXTENSION_CLIENT_ID.apps.googleusercontent.com",
+    "scopes": ["https://www.googleapis.com/auth/drive.file"]
+  },
+
+  "commands": {
+    "toggle-recording": {
+      "suggested_key": { "default": "Alt+Shift+R" },
+      "description": "Start or stop recording"
+    }
+  }
+}

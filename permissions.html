@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Loopless · Setup</title>
+<link rel="stylesheet" href="ui.css">
+<style>
+  .wrap{max-width:620px;margin:0 auto;padding:36px 20px 48px}
+  h1{font-size:28px;margin-bottom:6px}
+  .lead{color:var(--muted);margin:0 0 24px}
+  .card{margin-bottom:14px}
+  .card h2{font-size:16px;margin-bottom:4px}
+  .card p{margin:0 0 12px;color:var(--muted);font-size:14px}
+  .state{font-size:14px;font-weight:600;margin-left:10px}
+  .ok{color:var(--accent)}
+  .bad{color:var(--rec)}
+  video{width:220px;border-radius:10px;background:#000;display:block;margin-top:12px;transform:scaleX(-1)}
+  ol{margin:0;padding-left:20px;font-size:14px;color:var(--muted)}
+  ol li{margin-bottom:6px}
+  code{background:var(--bg);padding:1px 5px;border-radius:4px;font-size:13px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Loopless</h1>
+  <p class="lead">Two one-time steps, then the toolbar button is all you need.</p>
+
+  <div class="card">
+    <h2>1. Camera and microphone<span class="state" id="mediaState"></span></h2>
+    <p>Chrome won’t show a permission prompt from the invisible page that does the recording, so the access has to be granted here first. It’s remembered for good.</p>
+    <button class="btn primary" id="grantBtn">Grant access</button>
+    <video id="preview" muted playsinline hidden></video>
+    <p class="error" id="mediaError" hidden></p>
+  </div>
+
+  <div class="card">
+    <h2>2. Google Drive<span class="state" id="driveState"></span></h2>
+    <p>Optional. Without it you can still record and download; with it, takes upload to a “Loopless recordings” folder. Needs an OAuth client ID in <code>manifest.json</code> — the README walks through it.</p>
+    <button class="btn" id="driveBtn">Connect Google Drive</button>
+    <p class="error" id="driveError" hidden></p>
+  </div>
+
+  <div class="card">
+    <h2>Good to know</h2>
+    <ol>
+      <li>In “Screen + camera”, your camera is drawn into the video as a circle at the bottom-left.</li>
+      <li>Recording keeps running when the popup closes, you switch tabs, or you minimise Chrome.</li>
+      <li><strong>Alt+Shift+R</strong> starts and stops without opening the popup. Change it at <code>chrome://extensions/shortcuts</code>.</li>
+      <li>Chrome blocks recording of <code>chrome://</code> pages and the Web Store.</li>
+    </ol>
+  </div>
+</div>
+<script src="lib/drive.js"></script>
+<script src="permissions.js"></script>
+</body>
+</html>

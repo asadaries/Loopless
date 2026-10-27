@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Loopless recorder</title>
+</head>
+<body>
+  <!-- This document is never visible. It hosts the recorder for "This tab"
+       and camera-only takes, so MediaRecorder keeps running after the popup
+       closes: a popup is destroyed the moment it loses focus, an offscreen
+       document is not. Screens and windows use recorder.html instead. -->
+  <script src="lib/db.js"></script>
+  <script src="recorder.js"></script>
+</body>
+</html>

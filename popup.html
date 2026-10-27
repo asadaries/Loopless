@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Loopless</title>
+<link rel="stylesheet" href="ui.css">
+<style>
+  body{width:360px;padding:14px}
+  header{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}
+  .recbar{display:flex;align-items:center;gap:14px}
+  .settings{display:grid;gap:11px;margin-top:13px;padding-top:13px;border-top:1px solid var(--line)}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  section{margin-top:12px}
+  .aside-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2px}
+  .aside-head h2{font-size:14px;font-weight:600}
+  .aside-head span{display:flex;gap:12px}
+  .takes li .link + .link{margin-left:10px}
+  .drive{display:flex;align-items:center;gap:8px;justify-content:space-between;font-size:13px;color:var(--muted);margin-top:12px;padding-top:11px;border-top:1px solid var(--line)}
+</style>
+</head>
+<body>
+  <header>
+    <div class="brand"><span class="brand-dot" aria-hidden="true"></span>Loopless</div>
+    <button class="link" id="shortcutBtn">Shortcut</button>
+  </header>
+
+  <div class="card">
+    <div class="recbar">
+      <button class="recbtn" id="recBtn" aria-label="Start recording"><span></span></button>
+      <div class="grow">
+        <div class="timer" id="timer">0:00</div>
+        <div class="recstate" id="recState">Not recording</div>
+      </div>
+      <button class="btn" id="pauseBtn" hidden>Pause</button>
+    </div>
+
+    <div class="settings" id="settings">
+      <div class="modes" role="radiogroup" aria-label="What to record">
+        <label><input type="radio" name="mode" value="screen-camera" checked>Screen + camera</label>
+        <label><input type="radio" name="mode" value="screen">Screen</label>
+        <label><input type="radio" name="mode" value="camera">Camera</label>
+      </div>
+      <div class="row">
+        <label class="field" id="sourceField">Record
+          <select id="sourceSelect">
+            <option value="pick">Screen, window or tab</option>
+            <option value="tab">A tab</option>
+          </select>
+        </label>
+        <label class="field">Microphone
+          <select id="micSelect"><option value="default">Default</option><option value="none">None</option></select>
+        </label>
+      </div>
+      <label class="field" id="camField">Camera
+        <select id="camSelect"><option value="default">Default</option></select>
+      </label>
+      <label class="check" id="sysAudioField"><input type="checkbox" id="sysAudio" checked>Include tab or system audio</label>
+    </div>
+  </div>
+
+  <p class="error" id="error" role="alert" hidden></p>
+
+  <section>
+    <div class="aside-head">
+      <h2>Recent takes</h2>
+      <span>
+        <a class="link" id="driveFolder" href="#" target="_blank" rel="noopener" hidden>Drive folder</a>
+        <button class="link" id="libraryBtn">All takes</button>
+      </span>
+    </div>
+    <ul class="takes" id="takes"></ul>
+    <p class="muted" id="takesEmpty">Nothing recorded yet.</p>
+  </section>
+
+  <div class="drive">
+    <span id="driveLabel">Google Drive not connected</span>
+    <button class="btn" id="driveBtn">Connect</button>
+  </div>
+
+  <script src="lib/db.js"></script>
+  <script src="lib/drive.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

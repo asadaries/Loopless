@@ -1,0 +1,72 @@
+/* Shared look for the popup, the review tab and the permissions page.
+   System fonts only: Manifest V3's CSP forbids loading styles or scripts
+   from a CDN, so there is no Google Fonts link here. */
+:root{
+  --bg:#E8EDF2; --panel:#F8FAFC; --ink:#18242F; --muted:#5B6B7A; --line:#CBD5DF;
+  --rec:#D93B3F; --accent:#256D85; --accent-ink:#FFFFFF; --stage:#1D2833;
+  --display: ui-sans-serif, system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --body: ui-sans-serif, system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color-scheme: light dark;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#12181F; --panel:#1B232C; --ink:#E4EAF0; --muted:#94A3B1; --line:#2C3843;
+    --rec:#F0575B; --accent:#5AB0CB; --accent-ink:#0E1A20; --stage:#0B1117;
+  }
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 var(--body)}
+button,input,select{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+[hidden]{display:none!important}
+h1,h2{font-family:var(--display);letter-spacing:-.02em;margin:0}
+
+.brand{font-family:var(--display);font-weight:700;font-size:19px;letter-spacing:-.02em;display:flex;align-items:center;gap:8px}
+.brand-dot{width:11px;height:11px;border-radius:50%;background:var(--rec);flex:none}
+
+.btn{border:1px solid var(--line);background:var(--panel);padding:7px 13px;border-radius:8px;cursor:pointer;font-weight:600;font-size:14px}
+.btn:hover:not(:disabled){border-color:var(--muted)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn.danger-text{color:var(--rec)}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.link{background:none;border:0;padding:0;color:var(--accent);font-weight:600;cursor:pointer;text-decoration:none;font-size:13px}
+.link:hover{text-decoration:underline}
+
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px}
+.field{display:flex;flex-direction:column;gap:4px;font-size:13px;color:var(--muted);font-weight:600}
+select,input[type=text]{background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:7px 9px;color:var(--ink);width:100%;font-size:14px}
+.check{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--ink);font-weight:400;cursor:pointer}
+.check input{width:16px;height:16px;accent-color:var(--accent);flex:none}
+
+.modes{display:flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.modes label{position:relative;flex:1;text-align:center;padding:7px 4px;cursor:pointer;font-weight:600;font-size:13px;border-right:1px solid var(--line)}
+.modes label:last-child{border-right:0}
+.modes input{position:absolute;opacity:0;pointer-events:none}
+.modes label:has(input:checked){background:var(--ink);color:var(--bg)}
+.modes label:has(input:disabled){opacity:.45;cursor:not-allowed}
+.modes label:has(input:focus-visible){outline:3px solid var(--accent);outline-offset:-3px}
+
+.recbtn{width:58px;height:58px;border-radius:50%;border:3px solid var(--ink);background:transparent;display:grid;place-items:center;cursor:pointer;flex:none;padding:0}
+.recbtn span{width:34px;height:34px;border-radius:50%;background:var(--rec);transition:width .18s ease,height .18s ease,border-radius .18s ease}
+.recbtn.stop span{width:20px;height:20px;border-radius:4px}
+.recbtn:disabled{opacity:.5;cursor:wait}
+.timer{font-family:var(--display);font-weight:700;font-size:30px;line-height:1.1;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.recstate{color:var(--muted);font-size:13px;display:flex;align-items:center;gap:6px}
+.pulse{width:8px;height:8px;border-radius:50%;background:var(--rec);animation:pulse 1.2s infinite}
+@keyframes pulse{50%{opacity:.25}}
+
+.muted{color:var(--muted);font-size:13px}
+.error{color:var(--rec);font-size:13px;margin:0}
+.progress{height:6px;background:var(--line);border-radius:3px;overflow:hidden}
+.progress div{height:100%;width:0;background:var(--accent);transition:width .2s}
+
+.takes{list-style:none;margin:0;padding:0}
+.takes li{padding:9px 0;border-top:1px solid var(--line);display:flex;gap:10px;align-items:center}
+.takes .name{font-weight:600;line-height:1.25;overflow-wrap:anywhere;font-size:14px}
+.takes .meta{color:var(--muted);font-size:12px}
+.takes .grow{flex:1;min-width:0}
+.dot{width:7px;height:7px;border-radius:50%;flex:none}
+.dot.saved{background:var(--accent)}
+.dot.local{background:var(--muted)}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}

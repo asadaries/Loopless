@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Loopless</title>
+<link rel="stylesheet" href="ui.css">
+<style>
+  .wrap{max-width:900px;margin:0 auto;padding:20px 20px 48px}
+  header{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:4px 0 18px}
+  .stage{aspect-ratio:16/9;background:var(--stage);border-radius:14px;overflow:hidden;display:grid;place-items:center}
+  .stage video{width:100%;height:100%;object-fit:contain;display:block;background:#000}
+  .stage p{color:#C9D4DE;padding:24px;text-align:center;max-width:46ch}
+  .panel{margin-top:16px;display:grid;gap:13px}
+  .actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+  .grow{flex:1}
+  .result{display:flex;gap:14px;align-items:center;flex-wrap:wrap;font-size:14px}
+  .result a{color:var(--accent);font-weight:600}
+  h2{font-size:17px;margin:26px 0 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand"><span class="brand-dot" aria-hidden="true"></span>Loopless</div>
+    <span class="muted" id="meta"></span>
+    <a class="link" href="library.html">All recordings</a>
+  </header>
+
+  <div class="stage"><video id="player" controls playsinline hidden></video><p id="stageMsg">Loading…</p></div>
+
+  <div class="card panel" id="panel" hidden>
+    <label class="field">Title<input type="text" id="title" maxlength="200"></label>
+    <label class="check"><input type="checkbox" id="share">Anyone with the link can view</label>
+    <div class="actions">
+      <button class="btn primary" id="saveBtn">Save to Drive</button>
+      <button class="btn" id="downloadBtn">Download</button>
+      <span class="grow"></span>
+      <button class="btn danger-text" id="deleteBtn">Delete</button>
+    </div>
+    <div class="progress" id="progress" hidden><div id="progressBar"></div></div>
+    <div class="result" id="result" hidden></div>
+    <p class="error" id="error" role="alert" hidden></p>
+  </div>
+
+  <h2>All takes</h2>
+  <ul class="takes" id="takes"></ul>
+  <p class="muted" id="takesEmpty" hidden>Nothing recorded yet.</p>
+</div>
+
+<script src="lib/db.js"></script>
+<script src="lib/drive.js"></script>
+<script src="review.js"></script>
+</body>
+</html>

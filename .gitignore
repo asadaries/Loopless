@@ -1,0 +1,7 @@
+# Private signing key: never publish. Anyone holding it can ship an update under this extension's ID.
+*.pem
+*.pem.txt
+
+# Packaged builds (they can bundle the key above)
+*.zip
+*.crx

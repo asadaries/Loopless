@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Loopless · Recording</title>
+<link rel="stylesheet" href="ui.css">
+<style>
+  .wrap{max-width:420px;margin:0 auto;padding:48px 20px;text-align:center}
+  .brand{justify-content:center;margin-bottom:10px}
+</style>
+</head>
+<body>
+<!-- The recorder for screens and windows, opened as a pinned tab. It has to
+     be a real tab rather than the offscreen document because a
+     desktopCapture stream ID only works in the top-level frame of the tab
+     the picker was opened for, and this is that tab. The service worker
+     closes it when the take ends. -->
+<div class="wrap">
+  <div class="brand"><span class="brand-dot"></span>Loopless</div>
+  <p class="muted">This tab does the recording. Leave it open, because closing it discards the take. Use Stop in the toolbar popup or Alt+Shift+R to finish.</p>
+</div>
+<script src="lib/db.js"></script>
+<script src="recorder.js"></script>
+</body>
+</html>
